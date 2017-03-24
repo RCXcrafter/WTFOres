@@ -3,6 +3,7 @@ package wtfores.blocks;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.FMLControlledNamespacedRegistry;
 import cpw.mods.fml.common.registry.GameData;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.HashMap;
@@ -151,6 +152,15 @@ public class OverlayOre extends OreChildBlock {
 				} else if (stoneTypeString.equals("dirt")) {
 					String[] nameArray = { "dirt" };
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Blocks.dirt, "dirt", nameArray, "minecraft", ubify);
+				} else if (stoneTypeString.equals("end_stone")) {
+					String[] nameArray = { "end_stone" };
+					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Blocks.end_stone, "endstone", nameArray, "minecraft", ubify);
+				} else if (stoneTypeString.equals("umberstone") & Loader.isModLoaded("erebus")) {
+					String[] nameArray = { "umberstone" };
+					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Block.getBlockFromName("tile.erebus.umberstone_0"), "umberstone", nameArray, "erebus", ubify);
+				} else if (stoneTypeString.equals("atumlimestone") & Loader.isModLoaded("atum")) {
+					String[] nameArray = { "AtumStone" };
+					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, GameRegistry.findBlock("atum", "tile.stone"), "atumlimestone", nameArray, "atum", ubify);
 				} else if (BlockSets.stoneRegisters.containsKey(stoneTypeString)) {
 					IStoneRegister stoneregister = (IStoneRegister) BlockSets.stoneRegisters.get(stoneTypeString);
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, stoneregister.stone, stoneregister.unlocalisedName, stoneregister.stoneTextureNames, stoneregister.domain, ubify);
