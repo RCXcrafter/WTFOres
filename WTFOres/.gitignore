@@ -2,9 +2,15 @@
 /build/
 /config/
 /crash-reports/
+/eclipse/
+/.gradle/
 /gradle/
 /libs/
 /logs/
 /mods/
 /resourcepacks/
 /saves/
+/.settings/
+
+.classpath
+.project
