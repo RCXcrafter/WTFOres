@@ -33,8 +33,7 @@ public class OverlayOre extends OreChildBlock {
 	private IIcon[] textures;
 	public static String[] vanillaStone = { "stone" };
 
-	public OverlayOre(Block oreBlock, int parentMeta, int oreLevel, Block stoneBlock, String oreType,
-			String[] stoneNames, String domain) {
+	public OverlayOre(Block oreBlock, int parentMeta, int oreLevel, Block stoneBlock, String oreType, String[] stoneNames, String domain) {
 		super(oreBlock, parentMeta, stoneBlock);
 
 		loadTextureStrings(oreType, stoneNames, domain);
@@ -66,8 +65,7 @@ public class OverlayOre extends OreChildBlock {
 				localizedStone = "Lignite";
 			else
 				localizedStone = stoneNames[loop];
-			localizedNames[loop] = (WordUtils.capitalize(localizedStone) + " "
-					+ WordUtils.capitalize(oreType.substring(0, oreType.length() - 1).replace("_", " ")));
+			localizedNames[loop] = (WordUtils.capitalize(localizedStone) + " " + WordUtils.capitalize(oreType.substring(0, oreType.length() - 1).replace("_", " ")));
 		}
 		this.oreType = oreType;
 	}
@@ -81,8 +79,7 @@ public class OverlayOre extends OreChildBlock {
 		return block;
 	}
 
-	public static Block[] registerOverlaidOre(Block oreBlock, int parentMeta, String oreType, Block stoneBlock,
-			String unlocalisedName, String[] stoneNames, String domain, boolean ubify) {
+	public static Block[] registerOverlaidOre(Block oreBlock, int parentMeta, String oreType, Block stoneBlock, String unlocalisedName, String[] stoneNames, String domain, boolean ubify) {
 		Block[] blockArray = new Block[3];
 		Block blockToRegister = null;
 
@@ -156,7 +153,7 @@ public class OverlayOre extends OreChildBlock {
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Blocks.dirt, "dirt", nameArray, "minecraft", ubify);
 				} else if (BlockSets.stoneRegisters.containsKey(stoneTypeString)) {
 					IStoneRegister stoneregister = (IStoneRegister) BlockSets.stoneRegisters.get(stoneTypeString);
-					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, IStoneRegister.stone, IStoneRegister.unlocalisedName, IStoneRegister.stoneTextureNames, IStoneRegister.domain, ubify);
+					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, stoneregister.stone, stoneregister.unlocalisedName, stoneregister.stoneTextureNames, stoneregister.domain, ubify);
 				} else {
 					WTFCore.log.info("WTFOres: Unable to recognise stone type:" + stoneTypeString + ".");
 				}
@@ -177,8 +174,7 @@ public class OverlayOre extends OreChildBlock {
 		textures = new IIcon[16];
 		for (int loop = 0; loop < textureNames.length; loop++) {
 			textures[loop] = iconRegister.registerIcon("WTFOres:" + textureNames[loop]);
-			texturegeneratorlib.TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop],
-					parentLocations[loop], oreType, WTFOres.overlayDomain, false);
+			texturegeneratorlib.TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop], parentLocations[loop], oreType, WTFOres.overlayDomain, false);
 		}
 	}
 
@@ -190,8 +186,7 @@ public class OverlayOre extends OreChildBlock {
 
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
 		if ((WTFOresConfig.enableDenseOres) && (oreLevel < 2)) {
-			Block blockToSet = (Block) BlockSets.oreUbifier
-					.get(new OreBlockInfo(oreBlock, oreMeta, stoneBlock, oreLevel + 1));
+			Block blockToSet = (Block) BlockSets.oreUbifier.get(new OreBlockInfo(oreBlock, oreMeta, stoneBlock, oreLevel + 1));
 			if (blockToSet != null) {
 				world.setBlock(x, y, z, blockToSet, meta, 0);
 			}
