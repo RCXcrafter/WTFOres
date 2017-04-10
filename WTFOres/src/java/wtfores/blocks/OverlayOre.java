@@ -152,12 +152,12 @@ public class OverlayOre extends OreChildBlock {
 				} else if (stoneTypeString.equals("dirt")) {
 					String[] nameArray = { "dirt" };
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Blocks.dirt, "dirt", nameArray, "minecraft", ubify);
-				} else if (stoneTypeString.equals("end_stone")) {
+				} else if (stoneTypeString.equals("endstone")) {
 					String[] nameArray = { "end_stone" };
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Blocks.end_stone, "endstone", nameArray, "minecraft", ubify);
 				} else if (stoneTypeString.equals("umberstone") & Loader.isModLoaded("erebus")) {
 					String[] nameArray = { "umberstone" };
-					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, Block.getBlockFromName("tile.erebus.umberstone_0"), "umberstone", nameArray, "erebus", ubify);
+					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, GameRegistry.findBlock("erebus", "umberstone"), "umberstone", nameArray, "erebus", ubify);
 				} else if (stoneTypeString.equals("atumlimestone") & Loader.isModLoaded("atum")) {
 					String[] nameArray = { "AtumStone" };
 					registerOverlaidOre(newOre.oreBlock, newOre.metadata, newOre.textureName, GameRegistry.findBlock("atum", "tile.stone"), "atumlimestone", nameArray, "atum", ubify);
